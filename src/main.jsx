@@ -9,6 +9,7 @@ import Home from "./assets/Pages/Home.jsx";
 import BrowseCars from "./assets/Pages/BrowseCars.jsx";
 import AddCar from "./assets/Pages/AddCar.jsx";
 import MyListings from "./assets/Pages/MyListings.jsx";
+import CarsDetails from "./assets/Pages/CarsDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/my-listings",
         element: <MyListings></MyListings>,
+      },
+      {
+        path: "/car-details/:id",
+        element: <CarsDetails></CarsDetails>,
       },
     ],
   },

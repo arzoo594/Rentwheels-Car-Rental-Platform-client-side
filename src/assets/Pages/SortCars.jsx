@@ -82,7 +82,7 @@ const SortCars = () => {
 
               <div className="mt-auto">
                 <Link
-                  to={`/cars/${car._id}`}
+                  to={`/car-details/${car._id}`}
                   className="block w-full text-center py-3 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white font-semibold hover:brightness-110 transition duration-300 rounded-b-2xl"
                 >
                   View Details

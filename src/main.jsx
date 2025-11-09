@@ -10,6 +10,9 @@ import BrowseCars from "./assets/Pages/BrowseCars.jsx";
 import AddCar from "./assets/Pages/AddCar.jsx";
 import MyListings from "./assets/Pages/MyListings.jsx";
 import CarsDetails from "./assets/Pages/CarsDetails.jsx";
+import AuthProvider from "./Context/AuthProvider.jsx";
+import Login from "./assets/Pages/Login.jsx";
+import Register from "./assets/Pages/Register.jsx";
 
 const router = createBrowserRouter([
   {
@@ -36,12 +39,22 @@ const router = createBrowserRouter([
         path: "/car-details/:id",
         element: <CarsDetails></CarsDetails>,
       },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
     ],
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>
 );

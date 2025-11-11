@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { NavLink } from "react-router";
 import Swal from "sweetalert2";
 import logoo from "../Images/rent-car-logo-with-hand-and-keys-template-design-inspiration-design-element-for-logo-poster-card-banner-emblem-t-shirt-illustration-vector.jpg";
@@ -7,8 +7,16 @@ import { AuthContext } from "../Context/AuthContext";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const { user, signOutFunc, setUser } = useContext(AuthContext);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [user]);
 
   const handleSignOut = () => {
     signOutFunc()
@@ -79,7 +87,11 @@ const Navbar = () => {
         </ul>
 
         <div className="flex items-center space-x-2 lg:space-x-4">
-          {user ? (
+          {loading ? (
+            <div className="flex justify-center items-center">
+              <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
+            </div>
+          ) : user ? (
             <div className="relative">
               <img
                 src={user.photoURL || "https://via.placeholder.com/40"}
@@ -103,7 +115,7 @@ const Navbar = () => {
           ) : (
             <NavLink
               to="/login"
-              className="btn bg-gradient-to-r from-pink-400 via-purple-400 to-yellow-300 text-white hover:from-yellow-300 hover:via-pink-400 hover:to-purple-400 transition-all rounded text-sm px-4 py-2 lg:hidden"
+              className="btn bg-gradient-to-r from-pink-400 via-purple-400 to-yellow-300 text-white hover:from-yellow-300 hover:via-pink-400 hover:to-purple-400 transition-all rounded text-sm px-4 py-2"
             >
               Login
             </NavLink>
@@ -160,17 +172,6 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-
-        {!user && (
-          <div className="hidden lg:block">
-            <NavLink
-              to="/login"
-              className="btn bg-gradient-to-r from-pink-400 via-purple-400 to-yellow-300 text-white hover:from-yellow-300 hover:via-pink-400 hover:to-purple-400 transition-all rounded"
-            >
-              Login
-            </NavLink>
-          </div>
-        )}
       </div>
     </nav>
   );

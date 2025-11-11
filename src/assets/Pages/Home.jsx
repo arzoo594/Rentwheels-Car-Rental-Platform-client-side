@@ -4,6 +4,9 @@ import SortCars from "./SortCars";
 import WhyRentWithUs from "./WhyRentWithUs";
 import TopRatedCars from "./TopRatedCars";
 import Testimonials from "./Testimonials";
+import OurPartners from "./OurPartners";
+
+import JoinAsPartner from "./JoinAsPartner";
 
 const Home = () => {
   return (
@@ -13,6 +16,9 @@ const Home = () => {
       <WhyRentWithUs></WhyRentWithUs>
       <TopRatedCars></TopRatedCars>
       <Testimonials></Testimonials>
+
+      <OurPartners></OurPartners>
+      <JoinAsPartner></JoinAsPartner>
     </div>
   );
 };

@@ -13,6 +13,8 @@ import CarsDetails from "./assets/Pages/CarsDetails.jsx";
 import AuthProvider from "./Context/AuthProvider.jsx";
 import Login from "./assets/Pages/Login.jsx";
 import Register from "./assets/Pages/Register.jsx";
+import MyBookings from "./assets/Pages/MyBookings.jsx";
+import PrivateRoute from "./Components/PrivateRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -29,15 +31,27 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-car",
-        element: <AddCar></AddCar>,
+        element: (
+          <PrivateRoute>
+            <AddCar></AddCar>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/my-listings",
-        element: <MyListings></MyListings>,
+        element: (
+          <PrivateRoute>
+            <MyListings></MyListings>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/car-details/:id",
-        element: <CarsDetails></CarsDetails>,
+        element: (
+          <PrivateRoute>
+            <CarsDetails></CarsDetails>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",
@@ -46,6 +60,14 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/my-booking",
+        element: (
+          <PrivateRoute>
+            <MyBookings></MyBookings>
+          </PrivateRoute>
+        ),
       },
     ],
   },

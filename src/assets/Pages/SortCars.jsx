@@ -6,6 +6,7 @@ const SortCars = () => {
   const [cars, setCars] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredCars, setFilteredCars] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
@@ -13,8 +14,12 @@ const SortCars = () => {
       .then((res) => {
         setCars(res.data);
         setFilteredCars(res.data);
+        setLoading(false);
       })
-      .catch((err) => console.error("Error loading cars:", err));
+      .catch((err) => {
+        console.error("Error loading cars:", err);
+        setLoading(false);
+      });
   }, []);
 
   useEffect(() => {
@@ -35,6 +40,14 @@ const SortCars = () => {
     "🌍 Explore more with RentWheels — drive your way!",
     "💳 Easy payment options available for all users.",
   ];
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-80">
+        <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-blue-500"></div>
+      </div>
+    );
+  }
 
   return (
     <section className="py-16 bg-gray-50">

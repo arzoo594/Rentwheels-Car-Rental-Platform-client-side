@@ -15,11 +15,14 @@ import Login from "./assets/Pages/Login.jsx";
 import Register from "./assets/Pages/Register.jsx";
 import MyBookings from "./assets/Pages/MyBookings.jsx";
 import PrivateRoute from "./Components/PrivateRoute.jsx";
+import ErrorPage from "./Components/ErrorPage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <ErrorPage></ErrorPage>,
+
     children: [
       {
         index: true,

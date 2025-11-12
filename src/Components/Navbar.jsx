@@ -5,12 +5,21 @@ import logoo from "../Images/rent-car-logo-with-hand-and-keys-template-design-in
 import { AuthContext } from "../Context/AuthContext";
 
 const Navbar = () => {
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   const [menuOpen, setMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const { user, signOutFunc, setUser } = useContext(AuthContext);
 
+  useEffect(() => {
+    const html = document.querySelector("html");
+    html.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+  const handleTheme = (checked) => {
+    setTheme(checked ? "dark" : "light");
+  };
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
@@ -99,6 +108,7 @@ const Navbar = () => {
                 className="w-10 h-10 rounded-full cursor-pointer"
                 onClick={() => setUserMenuOpen(!userMenuOpen)}
               />
+
               {userMenuOpen && (
                 <div className="absolute right-0 mt-2 w-52 bg-gradient-to-b from-purple-500 via-pink-500 to-orange-400 rounded shadow-lg p-4 flex flex-col space-y-2 z-50">
                   <p className="text-white font-semibold">{user.displayName}</p>
@@ -120,6 +130,12 @@ const Navbar = () => {
               Login
             </NavLink>
           )}
+          <input
+            onChange={(e) => handleTheme(e.target.checked)}
+            type="checkbox"
+            defaultChecked={localStorage.getItem("theme") === "dark"}
+            className="toggle"
+          />
 
           <div className="lg:hidden">
             <button

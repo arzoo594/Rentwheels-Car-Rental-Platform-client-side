@@ -12,7 +12,7 @@ const CarsDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/cars/${id}`)
+      .get(`https://rentwheels-car-rental.vercel.app/cars/${id}`)
       .then((res) => {
         setCar(res.data);
         setLoading(false);
@@ -42,7 +42,7 @@ const CarsDetails = () => {
     };
 
     axios
-      .post("http://localhost:5000/bookings", bookingData)
+      .post("https://rentwheels-car-rental.vercel.app/bookings", bookingData)
       .then(() => {
         setCar({ ...car, status: "Booked" });
         Swal.fire({

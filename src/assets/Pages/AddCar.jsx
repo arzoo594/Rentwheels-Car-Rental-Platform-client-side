@@ -23,7 +23,7 @@ const AddCar = () => {
     };
 
     axios
-      .post("http://localhost:5000/cars", newCar)
+      .post("https://rentwheels-car-rental.vercel.app/cars", newCar)
       .then((res) => {
         Swal.fire({
           icon: "success",

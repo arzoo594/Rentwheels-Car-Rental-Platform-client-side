@@ -12,7 +12,7 @@ const MyListing = () => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get("http://localhost:5000/cars-all")
+        .get("https://rentwheels-car-rental.vercel.app/cars-all")
         .then((res) => {
           const userCars = res.data.filter(
             (car) => car.providerEmail === user.email
@@ -39,7 +39,7 @@ const MyListing = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/cars/${id}`)
+          .delete(`https://rentwheels-car-rental.vercel.app/cars/${id}`)
           .then(() => {
             setMyCars(myCars.filter((car) => car._id !== id));
             Swal.fire("Deleted!", "Car has been deleted.", "success");
@@ -67,7 +67,10 @@ const MyListing = () => {
     };
 
     axios
-      .patch(`http://localhost:5000/cars/${selectedCar._id}`, updatedData)
+      .patch(
+        `https://rentwheels-car-rental.vercel.app/cars/${selectedCar._id}`,
+        updatedData
+      )
       .then(() => {
         setMyCars(
           myCars.map((car) =>

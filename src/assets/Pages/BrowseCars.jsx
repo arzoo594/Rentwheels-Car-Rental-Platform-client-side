@@ -10,7 +10,7 @@ const BrowseCars = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/cars-all")
+      .get("https://rentwheels-car-rental.vercel.app/cars-all")
       .then((res) => {
         setCars(res.data);
         setFilteredCars(res.data);

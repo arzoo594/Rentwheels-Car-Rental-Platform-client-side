@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { signOut } from "firebase/auth";
 import { auth } from "../FireBase/firebase.config";
 
@@ -202,12 +202,12 @@ const Register = () => {
 
         <p className="text-center text-gray-500 mt-4">
           Already have an account?{" "}
-          <a
-            href="/login"
+          <Link
+            to="/login"
             className="text-purple-600 font-semibold link link-hover"
           >
             Sign In
-          </a>
+          </Link>
         </p>
       </div>
     </div>

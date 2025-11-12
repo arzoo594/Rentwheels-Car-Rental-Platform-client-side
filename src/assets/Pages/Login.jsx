@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../Context/AuthContext";
-import { useLocation, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 
 const Login = () => {
@@ -151,12 +151,12 @@ const Login = () => {
 
         <p className="text-center text-gray-500 mt-4">
           Don’t have an account?{" "}
-          <a
-            href="/register"
+          <Link
+            to="/register"
             className="text-purple-600 font-semibold link link-hover"
           >
             Sign Up
-          </a>
+          </Link>
         </p>
       </div>
     </div>
